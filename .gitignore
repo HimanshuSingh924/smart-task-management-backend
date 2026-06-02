@@ -9,7 +9,3 @@ logs/
 .env
 .env.*
 
-# Eclipse
-.project
-.classpath
-.settings/
