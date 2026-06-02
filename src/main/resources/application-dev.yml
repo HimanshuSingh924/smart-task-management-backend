@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/taskmanager_dev
+
+logging:
+  level:
+    com.taskmanager: DEBUG
+    com.devlib.auth: DEBUG
+    org.springframework.data.mongodb: DEBUG

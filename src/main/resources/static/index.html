@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Smart Task Management</title>
+  
+  <!-- Modern Google Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Premium stylesheet link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Navigation Header ── -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-logo-icon">⚡</div>
+      <span>TaskFlow</span>
+    </div>
+    <!-- User Info and Sign Out Button (Populated by app.js when logged in) -->
+    <div id="auth-header-info" class="navbar-right"></div>
+  </header>
+
+  <!-- ── Main Application Container ── -->
+  <main class="container">
+    
+    <!-- ── VIEW 1: Login Form ── -->
+    <section id="login-view" class="auth-card">
+      <div class="auth-logo">
+        <div class="auth-logo-icon">⚡</div>
+        <h2 class="auth-title">Welcome back</h2>
+        <p class="auth-subtitle">Sign in to manage your tasks</p>
+      </div>
+
+      <!-- Login input fields -->
+      <div class="form-group">
+        <label for="login-email">Email Address</label>
+        <input type="email" id="login-email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+      </div>
+
+      <!-- Action Button -->
+      <button class="btn btn-primary" onclick="handleLogin()">Sign In</button>
+      
+      <!-- Routing Switcher link -->
+      <div class="switch-link">
+        Don't have an account? <span onclick="switchView('register-view')">Create one free</span>
+      </div>
+    </section>
+
+    <!-- ── VIEW 2: Register Form ── -->
+    <section id="register-view" class="auth-card" style="display: none;">
+      <div class="auth-logo">
+        <div class="auth-logo-icon">⚡</div>
+        <h2 class="auth-title">Get Started</h2>
+        <p class="auth-subtitle">Create a free TaskFlow account</p>
+      </div>
+
+      <!-- Registration input fields -->
+      <div class="form-group">
+        <label for="reg-username">Username</label>
+        <input type="text" id="reg-username" class="form-input" placeholder="johndoe" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-email">Email Address</label>
+        <input type="email" id="reg-email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" class="form-input" placeholder="••••••••" required>
+      </div>
+
+      <!-- Action Button -->
+      <button class="btn btn-primary" onclick="handleRegister()">Create Account</button>
+      
+      <!-- Routing Switcher link -->
+      <div class="switch-link">
+        Already have an account? <span onclick="switchView('login-view')">Sign In</span>
+      </div>
+    </section>
+
+    <!-- ── VIEW 3: Main Task Dashboard ── -->
+    <section id="dashboard-view" class="dashboard" style="display: none;">
+      
+      <!-- Section 3A: Task Creator Panel -->
+      <div class="task-creator">
+        <h3 class="task-creator-title">＋ Create New Task</h3>
+        
+        <div class="form-group">
+          <label for="task-title">Title</label>
+          <input type="text" id="task-title" class="form-input" placeholder="Enter task title..." required>
+        </div>
+        
+        <div class="form-group">
+          <label for="task-desc">Description</label>
+          <textarea id="task-desc" class="form-input" placeholder="Enter task details/description..."></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" class="form-input">
+              <option value="LOW">Low</option>
+              <option value="MEDIUM" selected>Medium</option>
+              <option value="HIGH">High</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="task-due">Due Date</label>
+            <input type="date" id="task-due" class="form-input">
+          </div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="handleCreateTask()">Save Task</button>
+      </div>
+
+      <!-- Section 3B: Task Feed Header -->
+      <div class="dashboard-section-header">
+        <h2>My Task Feed</h2>
+        <div class="task-count-badge" id="task-counter">0 Tasks</div>
+      </div>
+      
+      <!-- Section 3C: Dynamic Tasks List Grid Container -->
+      <div id="task-list-container" class="task-grid">
+        <!-- Javascript dynamically inserts task cards here -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ── Real-time Alert Notification Banner ── -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Main logic script link -->
+  <script src="app.js"></script>
+</body>
+</html>

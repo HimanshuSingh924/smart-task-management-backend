@@ -1,0 +1,15 @@
+# Maven
+target/
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.*
+
+# Eclipse
+.project
+.classpath
+.settings/
